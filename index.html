@@ -21,78 +21,417 @@
 <body data-spy="scroll" data-target=".site-navbar-target" data-offset="300">
 	
 	
-	<nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light site-navbar-target" id="ftco-navbar">
-		<div class="container">
-			<a class="navbar-brand" href="index.html">InsightEdge</a>
-			<button class="navbar-toggler js-fh5co-nav-toggle fh5co-nav-toggle" type="button" data-toggle="collapse" data-target="#ftco-nav" aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
-				<span class="oi oi-menu"></span> Menu
-			</button>
+  <nav class="navbar navbar-expand-lg custom-navbar" id="ftco-navbar">
+    <style>
+  .custom-navbar {
+    padding: 15px 30px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    z-index: 999;
+    transition: background-color 0.4s ease, box-shadow 0.4s ease;
+    position: fixed;
+    top: 0;
+    width: 100%;
+  }
 
-			<div class="collapse navbar-collapse" id="ftco-nav">
-				<ul class="navbar-nav nav ml-auto">
-					<li class="nav-item"><a href="#home-section" class="nav-link"><span>Home</span></a></li>
-					<li class="nav-item"><a href="#about-section" class="nav-link"><span>About</span></a></li>
-					<li class="nav-item"><a href="#skills-section" class="nav-link"><span>Skills</span></a></li>
-					<li class="nav-item"><a href="#certifications" class="nav-link"><span>Certification</span></a></li>
-					<li class="nav-item"><a href="#projects-section" class="nav-link"><span>Projects</span></a></li>
-					<li class="nav-item"><a href="#contact-section" class="nav-link"><span>Contact</span></a></li>
-				</ul>
-			</div>
-		</div>
-	</nav>
-	<section id="home-section" class="hero">
-		<div class="home-slider owl-carousel">
-			<div class="slider-item">
-				<div class="overlay"></div>
-				<div class="container-fluid px-md-0">
-					<div class="row d-md-flex no-gutters slider-text align-items-end justify-content-end" data-scrollax-parent="true">
-						<div class="one-third order-md-last img" style="background-image:url(images/bg_1.jpg);">
-							<div class="overlay"></div>
-							<div class="overlay-1"></div>
-						</div>
-						<div class="one-forth d-flex  align-items-center ftco-animate" data-scrollax=" properties: { translateY: '70%' }">
-							<div class="text">
-										<span class="subheading">Hello! This is InsightEdge</span>
-										<h1 class="mb-4 mt-3">Aspiring Data Analyst & Creative Thinker</h1>
-										<p>
-											I’m a certified Data Analyst skilled in Excel, SQL, Python, and Tableau. I specialize in turning raw data into actionable insights and am open to remote entry-level opportunities.
-										</p>
-										<p>
-											<a href="#" class="btn btn-primary">Hire Me</a>
-											<a href="Anish_Patnaik .pdf" class="btn btn-primary btn-outline-primary">Download CV</a>
-										</p>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
+  .transparent-navbar {
+    background-color: transparent !important;
+  }
 
-			<div class="slider-item">
-				<div class="overlay"></div>
-				<div class="container-fluid px-md-0">
-					<div class="row d-flex no-gutters slider-text align-items-end justify-content-end" data-scrollax-parent="true">
-						<div class="one-third order-md-last img" style="background-image:url(images/bg_2.jpg);">
-							<div class="overlay"></div>
-							<div class="overlay-1"></div>
-						</div>
-						<div class="one-forth d-flex align-items-center ftco-animate" data-scrollax=" properties: { translateY: '70%' }">
-							<div class="text">
-								<span class="subheading">We Design &amp; Build Data-Driven Solutions</span>
-									<h1 class="mb-4 mt-3">Hi, I am <span>Anish</span> — a passionate Data Analyst.</h1>
-									<p>
-									I'm a certified Data Analyst skilled in Excel, SQL, Python, and Tableau, with hands-on projects like HR Attrition Analysis. I bring strong communication and analytical skills from my MBA and teaching background, and I’m actively seeking remote entry-level roles.
-									</p>
-									<p>
-									<a href="#" class="btn btn-primary">Hire Me</a>
-									<a href="Anish_Patnaik .pdf" class="btn btn-primary btn-outline-primary">Download CV</a>
-									</p>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-	</section>
+  .scrolled-navbar {
+    background-color: rgba(20, 20, 50, 0.85) !important;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+  }
+
+  .custom-navbar .navbar-brand {
+    font-size: 1.6rem;
+    font-weight: 700;
+    color: #a29bfe;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+  }
+
+  .custom-navbar .navbar-nav .nav-link {
+    font-size: 1rem;
+    color: #dcdde1;
+    margin-left: 20px;
+    transition: color 0.3s ease;
+    font-weight: 500;
+    position: relative;
+  }
+
+  .custom-navbar .navbar-nav .nav-link::after {
+    content: "";
+    display: block;
+    width: 0%;
+    height: 2px;
+    background: #a29bfe;
+    transition: width 0.3s;
+    position: absolute;
+    bottom: -6px;
+    left: 0;
+  }
+
+  .custom-navbar .navbar-nav .nav-link:hover {
+    color: #a29bfe;
+  }
+
+  .custom-navbar .navbar-nav .nav-link:hover::after {
+    width: 100%;
+  }
+
+  .custom-navbar .navbar-toggler {
+    border-color: rgba(255, 255, 255, 0.1);
+  }
+
+  .custom-navbar .navbar-toggler span {
+    color: #fff;
+    font-size: 1.2rem;
+  }
+
+  @media (max-width: 992px) {
+    .custom-navbar .navbar-nav {
+      background-color: rgba(44, 42, 74, 0.95);
+      padding: 15px;
+    }
+
+    .custom-navbar .nav-item {
+      margin-bottom: 10px;
+    }
+  }
+</style>
+
+
+  <div class="container">
+    <a class="navbar-brand" href="#">InsightEdge</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav" aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="oi oi-menu"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="ftco-nav">
+      <ul class="navbar-nav ml-auto">
+        <li class="nav-item"><a href="#home-section" class="nav-link">Home</a></li>
+        <li class="nav-item"><a href="#about-section" class="nav-link">About</a></li>
+        <li class="nav-item"><a href="#skills-section" class="nav-link">Skills</a></li>
+        <li class="nav-item"><a href="#certifications" class="nav-link">Certification</a></li>
+        <li class="nav-item"><a href="#projects-section" class="nav-link">Projects</a></li>
+        <li class="nav-item"><a href="#contact-section" class="nav-link">Contact</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+<script>
+  window.addEventListener('scroll', () => {
+    const navbar = document.getElementById('ftco-navbar');
+    if (window.scrollY > 100) {
+      navbar.classList.add('scrolled-navbar');
+    } else {
+      navbar.classList.remove('scrolled-navbar');
+    }
+  });
+</script>
+	
+     
+
+  <section id="home-section">
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap');
+
+    #home-section {
+	  padding: 120px 20px 80px;
+      height: 100vh;
+      font-family: 'Inter', sans-serif;
+      background: linear-gradient(135deg, #1b1535, #2c224a);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #e0dff7;
+      gap: 50px;
+    }
+
+    .content-wrapper {
+      display: flex;
+      width: 100%;
+      max-width: 1200px;
+      height: 80vh;
+      gap: 50px;
+    }
+
+    /* Carousel container */
+    .carousel {
+      flex: 1 1 60%;
+      background-color: rgba(38, 33, 64, 0.85);
+      border-radius: 20px;
+      box-shadow: 0 15px 40px rgba(0, 0, 0, 0.8);
+      overflow: hidden;
+      backdrop-filter: saturate(180%) blur(12px);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 50px 45px;
+      transition: background-color 0.3s ease;
+    }
+
+    .carousel-slide {
+      display: none;
+      animation: fadeSlide 0.6s ease-in-out forwards;
+    }
+
+    .carousel-slide.active {
+      display: block;
+    }
+
+    @keyframes fadeSlide {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .text-content {
+      width: 100%;
+    }
+
+    .subheading {
+      font-size: 1.1rem;
+      font-weight: 600;
+      color: #a59efb;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      margin-bottom: 12px;
+      font-feature-settings: "liga" 0;
+    }
+
+    h1 {
+      font-size: 2.8rem;
+      font-weight: 700;
+      margin-top: 0;
+      margin-bottom: 25px;
+      color: #f1efff;
+      line-height: 1.15;
+      letter-spacing: -0.02em;
+    }
+
+    h1 span {
+      color: #8c82ff;
+    }
+
+    p {
+      font-size: 1.15rem;
+      color: #ccc8fa;
+      margin-bottom: 35px;
+      line-height: 1.6;
+      font-weight: 500;
+      letter-spacing: 0.02em;
+    }
+
+    .buttons {
+      margin-top: 10px;
+    }
+
+    .btn {
+      padding: 14px 36px;
+      font-size: 1.1rem;
+      border-radius: 30px;
+      text-decoration: none;
+      transition: all 0.35s ease;
+      margin-right: 18px;
+      display: inline-block;
+      font-weight: 600;
+      box-shadow: 0 5px 12px rgba(0, 0, 0, 0.3);
+      cursor: pointer;
+      user-select: none;
+      border: none;
+    }
+
+     #home-section .btn-primary {
+    background: linear-gradient(135deg, #6c5ce7, #a29bfe) !important;
+    color: #fff !important;
+    font-weight: 600;
+    border: none !important;
+    border-radius: 30px !important;
+    padding: 14px 36px !important;
+    font-size: 1.1rem !important;
+    text-align: center;
+    display: inline-block;
+    cursor: pointer;
+    transition: all 0.35s ease;
+    box-shadow: 0 4px 14px rgba(108, 92, 231, 0.5) !important;
+  }
+
+  #home-section .btn-primary:hover,
+  #home-section .btn-primary:focus {
+    background: linear-gradient(135deg, #a29bfe, #6c5ce7) !important;
+    box-shadow: 0 6px 20px rgba(108, 92, 231, 0.7) !important;
+    outline: none !important;
+  }
+
+    .btn-outline-primary {
+      border: 2px solid #7b6fff;
+      color: #7b6fff;
+      background-color: transparent;
+      box-shadow: 0 0 12px rgba(123, 111, 255, 0.35);
+    }
+
+    .btn-outline-primary:hover,
+    .btn-outline-primary:focus {
+      background-color: #7b6fff;
+      color: #fff;
+      box-shadow: 0 6px 20px rgba(123, 111, 255, 0.85);
+      outline: none;
+    }
+
+    .carousel-controls {
+      text-align: center;
+      margin-top: 28px;
+    }
+
+    .dot {
+      height: 14px;
+      width: 14px;
+      margin: 0 9px;
+      background-color: #5e4bff88;
+      border-radius: 50%;
+      display: inline-block;
+      cursor: pointer;
+      transition: background-color 0.35s ease, box-shadow 0.35s ease;
+    }
+
+    .dot.active {
+      background-color: #8c82ff;
+      box-shadow: 0 0 16px #8c82ffcc;
+    }
+
+    .dot:hover:not(.active) {
+      background-color: #7b6fffcc;
+      box-shadow: 0 0 10px #7b6fffcc;
+    }
+
+    /* Image placeholder with subtle gradient overlay */
+    .image-placeholder {
+      flex: 1 1 40%;
+      background: linear-gradient(135deg, #423b72, #2a2550);
+      border-radius: 20px;
+      box-shadow: inset 0 0 40px #241e3c;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #8f89c2aa;
+      font-size: 1.3rem;
+      font-style: italic;
+      user-select: none;
+      letter-spacing: 0.05em;
+      font-weight: 600;
+      text-align: center;
+      padding: 20px;
+      min-height: 400px;
+    }
+
+    /* Responsive */
+    @media (max-width: 992px) {
+      #home-section {
+        padding: 30px 30px;
+      }
+      .content-wrapper {
+        flex-direction: column;
+        height: auto;
+      }
+      .carousel, .image-placeholder {
+        flex: 1 1 100%;
+        margin-bottom: 40px;
+      }
+      h1 {
+        font-size: 2.2rem;
+      }
+      p {
+        font-size: 1rem;
+      }
+    }
+
+    @media (max-width: 480px) {
+      h1 {
+        font-size: 1.7rem;
+      }
+      .btn {
+        padding: 12px 28px;
+        font-size: 1rem;
+      }
+      .carousel-controls {
+        margin-top: 20px;
+      }
+    }
+  </style>
+
+  <div class="content-wrapper">
+    <div class="carousel" id="carousel">
+      <!-- Slide 1 -->
+      <div class="carousel-slide active">
+        <div class="text-content">
+          <span class="subheading">Hello! This is InsightEdge</span>
+          <h1>Hi, I am <span>Anish</span> — Aspiring Data Analyst & Creative Thinker</h1>
+          <p>
+            I'm a certified Data Analyst skilled in Excel, SQL, Python, and Tableau. I translate complex data into actionable insights and am seeking remote entry-level opportunities.
+          </p>
+          <div class="buttons">
+            <a href="#contact" class="btn btn-primary">Hire Me</a>
+            <a href="Anish_Patnaik.pdf" class="btn btn-outline-primary" target="_blank" rel="noopener">Download CV</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Slide 2 -->
+      <div class="carousel-slide">
+        <div class="text-content">
+          <span class="subheading">What Sets Me Apart</span>
+          <h1>Strong Communication + Analytical Mindset</h1>
+          <p>
+            My 8 years of teaching and MBA background sharpen my communication skills. I break down data into clear, impactful stories that stakeholders understand.
+          </p>
+          <div class="buttons">
+            <a href="#contact" class="btn btn-primary">Hire Me</a>
+            <a href="Anish_Patnaik.pdf" class="btn btn-outline-primary" target="_blank" rel="noopener">Download CV</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="carousel-controls" role="tablist" aria-label="Carousel navigation">
+        <span class="dot active" role="tab" tabindex="0" aria-selected="true" aria-controls="slide1" onclick="showSlide(0)" onkeypress="if(event.key==='Enter'){showSlide(0);}"></span>
+        <span class="dot" role="tab" tabindex="0" aria-selected="false" aria-controls="slide2" onclick="showSlide(1)" onkeypress="if(event.key==='Enter'){showSlide(1);}"></span>
+      </div>
+    </div>
+
+    <div class="image-placeholder" aria-label="Placeholder for future image">
+      Image coming soon
+    </div>
+  </div>
+</section>
+
+<script>
+  let currentSlide = 0;
+  const slides = document.querySelectorAll('#home-section .carousel-slide');
+  const dots = document.querySelectorAll('#home-section .dot');
+
+  function showSlide(index) {
+    if(index === currentSlide) return;
+    slides[currentSlide].classList.remove('active');
+    dots[currentSlide].classList.remove('active');
+
+    currentSlide = index;
+
+    slides[currentSlide].classList.add('active');
+    dots[currentSlide].classList.add('active');
+  }
+
+  // Auto-slide every 6 seconds
+  setInterval(() => {
+    let nextSlide = (currentSlide + 1) % slides.length;
+    showSlide(nextSlide);
+  }, 6000);
+</script>
+
+
+
+
+
 
 	<!-- <section class="ftco-counter img bg-light" id="section-counter">
 		<div class="container">

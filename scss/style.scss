@@ -28,9 +28,7 @@ $secondary: #a0f669;
 }
 
 
-html {
-	// overflow-x: hidden;
-}
+
 body {
 	font-family: $font-primary;
 	background: $white;
@@ -353,6 +351,43 @@ h1, h2, h3, h4, h5,
 	  	display: none;
 	  }
 	}
+}
+
+@mixin media-breakpoint-down($breakpoint) {
+  @if $breakpoint == lg {
+    @media (max-width: 992px) {
+      @content;
+    }
+  }
+}
+
+.hero {
+  position: relative;
+  height: 300px;
+  background: $white;
+
+  h3.vr {
+    writing-mode: vertical-lr;
+    transform: rotate(180deg);
+    text-orientation: sideways;
+    text-align: center;
+    margin: 0;
+    position: absolute;
+    top: 0;
+    left: 4em;
+    height: 100%;
+    text-transform: uppercase;
+    font-weight: 500;
+    letter-spacing: 5px;
+    font-size: 16px;
+    z-index: 1;
+    color: rgba(0, 0, 0, 0.3);
+
+    @include media-breakpoint-down(lg) {
+      opacity: 0;
+      display: none;
+    }
+  }
 }
 
 //OWL CAROUSEL
@@ -1468,7 +1503,7 @@ textarea.form-control {
 .mfp-with-zoom .mfp-container,
 .mfp-with-zoom.mfp-bg {
   opacity: 0;
-  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
   -webkit-transition: all 0.3s ease-out; 
   -moz-transition: all 0.3s ease-out; 
   -o-transition: all 0.3s ease-out; 
@@ -1641,7 +1676,7 @@ textarea.form-control {
 			a{
 				color: $white;
 			}
-			span{}
+			
 		}
 	}
 	.contact-form{
@@ -1745,8 +1780,7 @@ textarea.form-control {
 		box-shadow: none!important;
 		font-size: 15px;
 	}
-	#map {
-	}
+	
 }
 
 
