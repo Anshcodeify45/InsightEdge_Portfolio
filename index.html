@@ -496,7 +496,7 @@
         <span style="color: #a29bfe; font-weight: 600; letter-spacing: 2px; text-transform: uppercase; font-size: 0.85rem;">My Intro</span>
         <h2 style="font-size: 2.8rem; margin: 12px 0 25px; font-weight: 700; color: #fff;">About Me</h2>
         <p style="font-size: 1.1rem; line-height: 1.6; color: #cfd3f7; margin-bottom: 30px;">
-          I'm Anish, a certified Data Analyst with a background in business and education. After 8 years in teaching and earning my MBA, I transitioned into data analytics to turn data into impactful insights. I’m skilled in Excel, SQL, Python, and Tableau, and have completed projects like HR Attrition Analysis. I'm now actively seeking remote entry-level opportunities to grow in this exciting field.
+          I'm Anish, a certified Data Analyst with a background in business and education. After 8 years in teaching and earning my MBA, I transitioned into data analytics to turn data into impactful insights. I’m skilled in Excel, SQL, Python,Machine Learning and Tableau and have completed projects like HR Attrition Analysis. I'm now actively seeking remote entry-level opportunities to grow in this exciting field.
         </p>
 
         <ul style="list-style: none; padding-left: 0; font-size: 1rem; line-height: 1.8; color: #dcdde1; margin-bottom: 30px;">
@@ -612,6 +612,13 @@
   border-radius: 1rem;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
   position: relative;
+  opacity: 0;
+  transform: translateY(40px) scale(0.95);
+  will-change: opacity, transform;
+}
+.skill-card.show {
+  opacity: 1;
+  transform: translateY(0) scale(1);
 }
 
 .skill-card:hover {
@@ -651,6 +658,25 @@ document.addEventListener('DOMContentLoaded', () => {
     }, 300);
   });
 });
+
+ const skillCards = document.querySelectorAll('.skill-card');
+
+   observer = new IntersectionObserver(entries => {
+    entries.forEach((entry, index) => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('show');
+        entry.target.style.transitionDelay = `${index * 100}ms`;
+      }
+    });
+  }, {
+    threshold: 0.1
+  });
+  skillCards.forEach((card, index) => {
+  card.style.transitionDelay = `${index * 150}ms`;
+  observer.observe(card);
+});
+</script>
+
 </script>
 
 
@@ -909,6 +935,8 @@ document.addEventListener('DOMContentLoaded', () => {
   border-radius: 1.5rem;
   box-shadow: 0 0 12px rgba(0, 0, 0, 0.3);
   transition: all 0.4s ease;
+  opacity: 0;
+  transform: translateX(-50px);
   color: #fff;
   height: 100%;
   position: relative;
@@ -916,6 +944,10 @@ document.addEventListener('DOMContentLoaded', () => {
   display: flex;
   flex-direction: column;
   align-items: center;
+}
+.cert-card.show {
+  opacity: 1;
+  transform: translateX(0);
 }
 
 .cert-card:hover {
@@ -950,6 +982,25 @@ document.addEventListener('DOMContentLoaded', () => {
   max-width: 90%;
 }
  </style>
+
+ <script>
+  const certCards = document.querySelectorAll('.cert-card');
+
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('show');
+      }
+    });
+  }, {
+    threshold: 0.1
+  });
+
+ certCards.forEach((card, index) => {
+  card.style.transitionDelay = `${index * 150}ms`;
+  observer.observe(card);
+});
+</script>
 
  <!-- Contact me -->
 
@@ -1016,19 +1067,21 @@ document.addEventListener('DOMContentLoaded', () => {
 <section class="ftco-section" id="projects-section" style="background-color: #141432;">
   <div class="container">
     <div class="row justify-content-center pb-5">
-      <div class="col-md-10 heading-section text-center position-relative" style="min-height: 120px;">
+      <div class="col-md-10 heading-section text-center position-relative" style="min-height: 100px;">
         <!-- This is the correct position for the heading block -->
-		 <div>
+		 <div >
 			<h1 class="Heading">Projects</h1>
 		 </div>
-		 <div>
-			<h2 class="mb-4" style="color: #fff; font-weight: 700;">Data Projects</h2>
-		 </div>
-		 <div>
-			        <p style="color: #ccc; font-size: 1.1rem; max-width: 700px; margin: 0 auto;">
+		
+
+    <!-- Main Section Content -->
+        <div class="row justify-content-center pb-5">
+      <div class="col-md-10 heading-section text-center position-relative">
+        <h2 class="mb-4" style="color: #fff; font-weight: 700;">Data Projects</h2>
+        <p style="color: #ccc; font-size: 1.1rem; max-width: 700px; margin: 0 auto;">
           I transform complex data into simple, actionable stories. Explore my journey through insights, visualizations, and real-world impact.
         </p>
-		 </div>
+      </div>
       </div>
     </div>
 
@@ -1067,35 +1120,21 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
 <style>
-	.project-card {
-  background-color: #1e1e1e;
-  border: 1px solid #333;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
 
-.project-card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 10px 30px rgba(108, 92, 231, 0.3);
-}
-
-.project-card img {
-  max-height: 180px;
-  object-fit: cover;
-  border-radius: 12px;
-}
 
 .Heading {
   position: absolute;
-  top: 30px;
+  top: -80px;
   left: 50%;
   transform: translateX(-50%);
   font-weight: 900;
-  font-size: 6rem;
-  color: #6c5ce7;
+  font-size: 5rem;
+  color: #f8f8f8;
   letter-spacing: 10px;
-  opacity: 0.05;
+  opacity: 0.07;
   user-select: none;
   pointer-events: none;
+  z-index: 0;
   white-space: nowrap;
   line-height: 1;
 }
@@ -1108,9 +1147,56 @@ document.addEventListener('DOMContentLoaded', () => {
 .heading-section p {
   position: relative;
   z-index: 1;
+  top: 37px;
 }
 
+	.project-card {
+  background-color: #292854;
+  border: 1px solid #333;
+  border-radius: 16px;
+  opacity: 0;
+  transform: scale(0.9) translateY(20px);
+  transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+}
+
+
+.project-card.show {
+  opacity: 1;
+  transform: scale(1) translateY(0);
+}
+
+.project-card:hover {
+  transform: scale(1.03);
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.3);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.project-card img {
+  max-height: 180px;
+  object-fit: cover;
+  border-radius: 12px;
+}
 </style>
+
+<script>
+  const projectCards = document.querySelectorAll('.project-card');
+
+  const observe = new IntersectionObserver(entries => {
+    entries.forEach((entry, index) => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('show');
+        entry.target.style.transitionDelay = `${index * 150}ms`; // Stagger effect
+      }
+    });
+  }, {
+    threshold: 0.2
+  });
+
+   projectCards.forEach(card => {
+    observe.observe(card);
+  });
+</script>
 
 	<!-- <section class="ftco-section testimony-section bg-primary">
 		<div class="container">
@@ -1271,92 +1357,129 @@ document.addEventListener('DOMContentLoaded', () => {
 		</div>
 	</section> -->
 
-	<section class="ftco-section contact-section ftco-no-pb" id="contact-section">
-		<div class="container">
-			<div class="row justify-content-center mb-5 pb-3">
-				<div class="col-md-7 heading-section text-center ftco-animate">
-					<span class="subheading">Contact us</span>
-					<h2 class="mb-4">Have a Project?</h2>
-					<p>I'd love to hear about your project. Whether it's a data analysis task, dashboard design, or a full solution, I'm ready to bring your vision to life.</p>
-				</div>
-			</div>
+	<section class="ftco-section contact-section" id="contact-section" style="background-color: #292854; position: relative; overflow: hidden;">
+  <div class="container">
 
-			<div class="row block-9">
-						<div class="col-md-8">
-							<form action="https://formspree.io/f/xeogbpol" method="POST" class="bg-light p-4 p-md-5 contact-form">
-							<div class="row">
-								<div class="col-md-6">
-								<div class="form-group">
-									<input type="text" name="name" class="form-control" placeholder="Your Name" required>
-								</div>
-								</div>
-								<div class="col-md-6">
-								<div class="form-group">
-									<input type="email" name="email" class="form-control" placeholder="Your Email" required>
-								</div>
-								</div>
-								<div class="col-md-12">
-								<div class="form-group">
-									<input type="text" name="subject" class="form-control" placeholder="Subject" required>
-								</div>
-								</div>
-								<div class="col-md-12">
-								<div class="form-group">
-									<textarea name="message" cols="30" rows="7" class="form-control" placeholder="Message" required></textarea>
-								</div>
-								</div>
-								<div class="col-md-12">
-								<div class="form-group">
-									<input type="hidden" name="_next" value="thank-you.html">
-									<input type="submit" value="Send Message" class="btn btn-primary py-3 px-5">
-								</div>
-								</div>
-							</div>
-							</form>
-						</div>
+    <!-- Big background heading -->
+    <div class="background-title text-center">
+      <h1 class="Heading" style="color: white;">Contact</h1>
+    </div>
 
-						<div class="col-md-4 d-flex pl-md-5">
-							<div class="row">
-							<div class="dbox w-100 d-flex">
-								<div class="icon d-flex align-items-center justify-content-center">
-								<span class="fa fa-map-marker"></span>
-								</div>
-								<div class="text">
-								<p><span>Address:</span> Rohit Colony 3rd line, Rayagada, Odisha, India 765001</p>
-								</div>
-							</div>
-							<div class="dbox w-100 d-flex">
-								<div class="icon d-flex align-items-center justify-content-center">
-								<span class="fa fa-phone"></span>
-								</div>
-								<div class="text">
-								<p><span>Phone:</span> <a href="tel:+917008814048">+91-7008814048</a></p>
-								</div>
-							</div>
-							<div class="dbox w-100 d-flex">
-								<div class="icon d-flex align-items-center justify-content-center">
-								<span class="fa fa-paper-plane"></span>
-								</div>
-								<div class="text">
-								<p><span>Email:</span> <a href="mailto:anishpatnaik65@gmail.com">anishpatnaik65@gmail.com</a></p>
-								</div>
-							</div>
-							</div>
-						</div>
-						</div>
+    <!-- Main heading + paragraph -->
+    <div class="row justify-content-center mb-5 pb-3 text-center">
+      <div class="col-md-8 heading-section">
+        <h2 class="mb-4" style="color: #fff; font-weight: 700;">Have a Project?</h2>
+        <p style="color: #ccc; font-size: 1.1rem;">
+          I'd love to hear about your project. Whether it's a data analysis task, dashboard design, or a full solution, I'm ready to bring your vision to life.
+        </p>
+      </div>
+    </div>
 
-		</div>
-	</section>
+    <!-- Contact Form + Info -->
+    <div class="row block-9">
+      <!-- Contact Form -->
+      <div class="col-md-8">
+        <form action="https://formspree.io/f/xeogbpol" method="POST" class="p-4 p-md-5 contact-form rounded-4 shadow" style="background-color: #141432;">
+          <div class="row">
+            <div class="col-md-6 mb-3">
+              <input type="text" name="name" class="form-control bg-dark text-light border-secondary" placeholder="Your Name" required>
+            </div>
+            <div class="col-md-6 mb-3">
+              <input type="email" name="email" class="form-control bg-dark text-light border-secondary" placeholder="Your Email" required>
+            </div>
+            <div class="col-md-12 mb-3">
+              <input type="text" name="subject" class="form-control bg-dark text-light border-secondary" placeholder="Subject" required>
+            </div>
+            <div class="col-md-12 mb-3">
+              <textarea name="message" rows="6" class="form-control bg-dark text-light border-secondary" placeholder="Message" required></textarea>
+            </div>
+            <div class="col-md-12">
+              <input type="hidden" name="_next" value="thank-you.html">
+              <input type="submit" value="Send Message" class="btn btn-outline-light px-5 py-3">
+            </div>
+          </div>
+        </form>
+      </div>
+
+      <!-- Contact Info -->
+    <div class="col-md-4 d-flex flex-column justify-content-start gap-4 ps-md-5 mt-4 mt-md-0 text-light" >
+  <!-- Address -->
+  <div class="dbox d-flex align-items-start p-3 rounded-4  border border-secondary shadow-sm" style="background-color: #141432;">
+    <span class="fa fa-map-marker fs-4 me-3 mt-1 text-primary"></span>
+    <p class="mb-0">
+      <strong class="text-white">Address:</strong><br>
+      Rohit Colony 3rd line, Rayagada, Odisha, India 765001
+    </p>
+  </div>
+
+  <!-- Phone -->
+  <div class="dbox d-flex align-items-start p-3 rounded-4  border border-secondary shadow-sm" style="background-color: #141432;" >
+    <span class="fa fa-phone fs-4 me-3 mt-1 text-success"></span>
+    <p class="mb-0">
+      <strong class="text-white">Phone:</strong><br>
+      <a href="tel:+917008814048" class="text-light text-decoration-none">+91-7008814048</a>
+    </p>
+  </div>
+
+  <!-- Email -->
+  <div class="dbox d-flex align-items-start p-3 rounded-4  border border-secondary shadow-sm" style="background-color: #141432;">
+    <span class="fa fa-paper-plane fs-4 me-3 mt-1 text-warning"></span>
+    <p class="mb-0">
+      <strong class="text-white">Email:</strong><br>
+      <a href="mailto:anishpatnaik65@gmail.com" class="text-light text-decoration-none">anishpatnaik65@gmail.com</a>
+    </p>
+  </div>
+</div>
+
+
+  </div>
+</section>
+
+<!-- Styles for faded heading -->
+<style>
+  .background-title {
+    position: absolute;
+    left: 0;
+    width: 100%;
+    z-index: 0;
+  }
+
+  .Heading{
+	top: -80px;
+    font-weight: 900;
+    font-size: 6rem;
+    color: #6c5ce7;
+    letter-spacing: 10px;
+    opacity: 0.07;
+    user-select: none;
+    pointer-events: none;
+    white-space: nowrap;
+    line-height: 1;
+  }
+
+  .contact-form .form-control::placeholder {
+    color: #bbb;
+  }
+
+  .contact-form .form-control {
+    border-radius: 8px;
+  }
+
+  .btn-outline-light {
+    border-radius: 8px;
+  }
+</style>
+
 	
 
-	<footer class="ftco-footer ftco-section">
+	<footer class="ftco-footer ftco-section" style="background-color: #141432;">
 		<div class="container">
 			<div class="row mb-5">
 				<div class="col-md">
 					<div class="ftco-footer-widget mb-4">
 						<h2 class="ftco-heading-2">Lets talk about</h2>
 						<p>Have a project in mind or just want to chat about data, tech, or ideas? I'd love to connect and explore how I can help bring your vision to life.</p>
-						<p><a href="#" class="btn btn-primary">Learn more</a></p>
+						<p><a href="#" class="btn btn-sm btn-outline-light mt-2">Learn more</a></p>
 					</div>
 				</div>
 				<div class="col-md">
@@ -1412,7 +1535,14 @@ document.addEventListener('DOMContentLoaded', () => {
 			</div>
 			
 		</footer>
-		
+		<style>
+			.btn-glow:hover {
+				background-color: #7a6ded;
+				box-shadow: 0 0 20px rgba(108, 92, 231, 0.6),
+							0 0 30px rgba(108, 92, 231, 0.3);
+				transform: translateY(-3px);
+				}
+		</style>
 		
 
 		<!-- loader -->
