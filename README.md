@@ -1,1 +1,0 @@
-# InsightEdge_Portfolio
