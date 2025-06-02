@@ -98,14 +98,39 @@
       max-width: 1200px;
       height: 80vh;
       gap: 50px;
+      background-color: #1b1430;
+      border-radius: 20px;
+      box-shadow: 0 15px 40px rgba(0, 0, 0, 0.8);
+      opacity: 0;
+      transform: translateY(40px);
+      transition: opacity 1s ease, transform 1s ease;
     }
 
+    .content-wrapper.active {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    .content-wrapper .left,
+    .content-wrapper .right {
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 0.8s ease, transform 0.8s ease;
+    }
+
+    .content-wrapper.active .left {
+      opacity: 1;
+      transform: translateY(0);
+      transition-delay: 0.3s;
+    }
+
+    .content-wrapper.active .right {
+      opacity: 1;
+      transform: translateY(0);
+      transition-delay: 0.6s;
+    }
     /* Carousel container */
     .carousel {
       flex: 1 1 60%;
-      background-color: rgba(38, 33, 64, 0.85);
-      border-radius: 20px;
-      box-shadow: 0 15px 40px rgba(0, 0, 0, 0.8);
       overflow: hidden;
       backdrop-filter: saturate(180%) blur(12px);
       display: flex;
@@ -113,6 +138,8 @@
       justify-content: center;
       padding: 50px 45px;
       transition: background-color 0.3s ease;
+      background-color: #1b1430;
+      border-radius: 20px;
     }
 
     .carousel-slide {
@@ -248,25 +275,109 @@
       box-shadow: 0 0 10px #7b6fffcc;
     }
 
+    @media (max-width: 1024px) {
+  .content-wrapper {
+    flex-direction: column;
+    gap: 30px;
+    padding: 1.5rem;
+  }
+
+  .content-wrapper .left,
+  .content-wrapper .right {
+    width: 100%;
+    text-align: center;
+  }
+
+  .content-wrapper .right {
+    order: 2;
+  }
+
+  .content-wrapper .left {
+    order: 1;
+  }
+}
+
+@media (max-width: 600px) {
+  .content-wrapper {
+    padding: 1rem;
+    gap: 20px;
+  }
+
+  .content-wrapper .left img,
+  .content-wrapper .blob {
+    width: 80%;
+    max-width: 300px;
+  }
+
+  .content-wrapper .right {
+    font-size: 14px;
+  }
+}
+
     /* Image placeholder with subtle gradient overlay */
-    .image-placeholder {
-      flex: 1 1 40%;
-      background: linear-gradient(135deg, #423b72, #2a2550);
-      border-radius: 20px;
-      box-shadow: inset 0 0 40px #241e3c;
+ .hero-container {
+      margin: 0;
+      padding: 0;
       display: flex;
-      align-items: center;
       justify-content: center;
-      color: #8f89c2aa;
-      font-size: 1.3rem;
-      font-style: italic;
-      user-select: none;
-      letter-spacing: 0.05em;
-      font-weight: 600;
-      text-align: center;
-      padding: 20px;
-      min-height: 400px;
+      align-items: center;
+      height: 80vh;
+      font-family: Arial, sans-serif;
+      width: 40%;
     }
+
+    .hero-contain {
+      position: relative;
+      width: 350px;
+      height: 450px;
+    }
+
+    .blob {
+      position: absolute;
+      top: 70px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 320px;
+      height: 270px;
+      background:  radial-gradient(circle, #00FFFF, #A855F7);;
+      filter: blur(30px);
+      border-radius: 60% 40% 30% 70% / 50% 60% 40% 60%;
+      animation: pulseGlow 4s infinite ease-in-out;
+      z-index: 0;
+      box-shadow: 
+        0 0 40px 10px rgba(0, 255, 255, 0.3), 
+        0 0 80px 20px rgba(168, 85, 247, 0.2); 
+    }
+
+@keyframes pulseGlow {
+  0% {
+    box-shadow:
+      0 0 40px 10px rgba(0, 255, 255, 0.3),
+      0 0 80px 20px rgba(168, 85, 247, 0.2);
+  }
+  50% {
+    box-shadow:
+      0 0 50px 15px rgba(0, 255, 255, 0.4),
+      0 0 100px 30px rgba(168, 85, 247, 0.25);
+  }
+  100% {
+    box-shadow:
+      0 0 40px 10px rgba(0, 255, 255, 0.3),
+      0 0 80px 20px rgba(168, 85, 247, 0.2);
+  }
+}
+
+    .profile-image {
+      position: relative;
+      z-index: 1;
+      width: 580px;
+      height: 480px;
+      object-fit: contain;
+      margin-top: -35px;
+      margin-left: -85px;
+    }
+
+
 
     /* Responsive */
     @media (max-width: 992px) {

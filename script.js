@@ -10,6 +10,11 @@
 
 // Home script
 
+ window.addEventListener("DOMContentLoaded", () => {
+    const wrapper = document.querySelector(".content-wrapper");
+    wrapper.classList.add("active");
+  });
+
   let currentSlide = 0;
   const slides = document.querySelectorAll('#home-section .carousel-slide');
   const dots = document.querySelectorAll('#home-section .dot');
