@@ -396,10 +396,18 @@
   }
 }
 
+@media (max-width: 412px) {
+  .profile-image {
+    max-width: 220px;
+    margin-top: 30px;
+  }
+}
+
+
 @media (max-width: 767px) {
   .profile-image {
-    max-width: 180px;
-    margin-top: 60px;
+    max-width: 220px;
+    margin-top: 40px;
     margin-left: 18px;
   }
 }
@@ -415,10 +423,76 @@
 
 
     /* Responsive */
+
+@media (max-width: 412px) {
+  #home-section {
+    height: auto;
+    padding: 40px 10px;
+  }
+
+    .blob {
+    top: 50px;
+    width: 200px;
+    height: 120px;
+    filter: blur(20px);
+    border-radius: 50% 50% 40% 60% / 50% 50% 60% 40%;
+    box-shadow: 
+      0 0 25px 6px rgba(0, 255, 255, 0.3), 
+      0 0 50px 10px rgba(168, 85, 247, 0.2);
+  }
+
+  .content-wrapper {
+    flex-direction: column !important;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 15px 10px;
+    gap: 15px;
+    height: auto !important;
+    overflow: visible;
+  }
+
+  .text-content h1 {
+    font-size: 1.1rem;
+    line-height: 1.3;
+  }
+
+  .text-content p {
+    font-size: 0.9rem;
+    line-height: 1.4;
+    margin: 0 auto;
+  }
+
+  .button-group {
+    flex-direction: column;
+    gap: 12px;
+    width: 100%;
+  }
+
+  .btn {
+    font-size: 0.95rem;
+    padding: 10px 14px;
+    width: 100%;
+  }
+}
+
+
 @media (max-width: 576px) {
   #home-section{
     height: auto;
   }
+
+   .blob {
+    top: 50px;
+    width: 220px;
+    height: 180px;
+    filter: blur(20px);
+    border-radius: 50% 50% 40% 60% / 50% 50% 60% 40%;
+    box-shadow: 
+      0 0 25px 6px rgba(0, 255, 255, 0.3), 
+      0 0 50px 10px rgba(168, 85, 247, 0.2);
+  }
+
   .content-wrapper {
     display: flex;
     flex-direction: column !important;
@@ -463,6 +537,16 @@
   #home-section {
     height: auto;
   }
+  .blob {
+    top: 60px;
+    width: 260px;
+    height: 220px;
+    filter: blur(25px);
+    border-radius: 55% 45% 35% 65% / 50% 55% 45% 50%;
+    box-shadow: 
+      0 0 30px 8px rgba(0, 255, 255, 0.3), 
+      0 0 60px 15px rgba(168, 85, 247, 0.2);
+  }
    .content-wrapper {
     flex-direction: column;  /* Stack vertically */
     height: auto;            /* Let height adjust */
@@ -502,6 +586,16 @@
     height: auto;
   }
 
+   .blob {
+    top: 65px;
+    width: 300px;
+    height: 250px;
+    filter: blur(28px);
+    border-radius: 60% 40% 30% 70% / 50% 60% 40% 60%;
+    box-shadow: 
+      0 0 35px 9px rgba(0, 255, 255, 0.3), 
+      0 0 70px 18px rgba(168, 85, 247, 0.2);
+  }
   .content-wrapper {
     flex-direction: column;  /* Stack vertically */
     height: auto;            /* Let height adjust */
