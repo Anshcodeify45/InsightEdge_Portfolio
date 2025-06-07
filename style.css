@@ -1,4 +1,5 @@
 /* navbar Detail */
+
   .custom-navbar {
     padding: 15px 30px;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
@@ -385,7 +386,7 @@
   }
 }
 
-    .profile-image {
+    /* .profile-image {
       position: relative;
       width: 85%;
       max-width: 300px;
@@ -395,30 +396,75 @@
       margin-top: -80px;
       margin-left: 33px;
 
-    }
+    } */
+
+ .profile-image {
+  position: relative;
+  max-width: 280px;
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+  border-radius: 20px;
+  margin: auto;
+  margin-top: -80px;
+  margin-left: 33px;
+}
+
+@media (max-width: 576px) {
+  .profile-image {
+    max-width: 180px;
+    margin-top: 40px;
+    margin-left: 18px;
+  }
+}
 
 
 
     /* Responsive */
-    @media (max-width: 992px) {
-      #home-section {
-        padding: 30px 30px;
-      }
-      .content-wrapper {
-        flex-direction: column;
-        height: auto;
-      }
-      .carousel, .image-placeholder {
-        flex: 1 1 100%;
-        margin-bottom: 40px;
-      }
-      h1 {
-        font-size: 2.2rem;
-      }
-      p {
-        font-size: 1rem;
-      }
-    }
+@media (max-width: 576px) {
+  #home-section{
+    height: auto;
+  }
+  .content-wrapper {
+    display: flex;
+    flex-direction: column !important;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+
+    padding: 20px 15px;
+    gap: 20px;
+
+    height: auto !important; /* Key fix */
+    overflow: visible;
+  }
+
+  .text-content h1 {
+    font-size: 1.3rem;
+    line-height: 1.4;
+  }
+
+  .text-content p {
+    font-size: 0.95rem;
+    line-height: 1.5;
+  }
+
+  .button-group {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    width: 100%;
+  }
+
+  .btn {
+    font-size: 1rem;
+    padding: 12px;
+    width: 100%;
+    box-sizing: border-box;
+  }
+}
+
+
 
     @media (max-width: 480px) {
       h1 {
@@ -432,6 +478,76 @@
         margin-top: 20px;
       }
     }
+
+    /* About */
+
+    @media (max-width: 768px) {
+  #about-section {
+    padding: 50px 15px;
+  }
+
+  #about-section h2 {
+    font-size: 2rem !important;
+    margin-bottom: 20px !important;
+  }
+
+  #about-section p {
+    font-size: 1rem !important;
+  }
+
+  #about-section ul {
+    font-size: 0.95rem;
+  }
+
+  #about-section .container > div {
+    flex-direction: column !important;
+    gap: 30px !important;
+  }
+
+  #about-section .container > div > div {
+    min-width: 100% !important;
+  }
+
+  #about-section .container > div > div:first-child {
+    order: 2; /* Push image below text if preferred */
+  }
+
+  #about-section .container > div > div:last-child {
+    order: 1;
+    text-align: center;
+  }
+
+  #about-section .container ul {
+    padding-left: 0;
+    margin-bottom: 25px;
+  }
+
+  #about-section .container .hobbies {
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+}
+
+@media (max-width: 480px) {
+  #about-section h2 {
+    font-size: 1.6rem !important;
+  }
+
+  #about-section p {
+    font-size: 0.9rem !important;
+    line-height: 1.5;
+  }
+
+  #about-section ul li {
+    font-size: 0.9rem;
+  }
+
+  #about-section .container .hobbies {
+    gap: 15px;
+    flex-direction: column;
+    align-items: center;
+  }
+}
 
     /* Skills */
 .skill-card {
@@ -500,7 +616,6 @@
 @media (max-width: 576px) {
   .skills-container {
     grid-template-columns: 1fr;
-    gap: 1rem;
     padding: 1rem;
   }
 
@@ -586,8 +701,9 @@
 }
 
 #certifications .certificate-img img {
-  width: 140px;
+  width: 220px;
   height: 160px; /* taller image */
+  max-width: 100%;
   border-radius: 10px;
   object-fit: cover; /* keep aspect ratio, fill the box */
   transition: transform 0.3s ease;
@@ -615,6 +731,52 @@
     margin-top: 50px;
   }
 }
+
+@media (max-width: 576px) {
+  #certifications {
+    padding: 40px 15px;
+    height: auto;
+  }
+
+  #certifications .row.d-flex {
+    flex-direction: column;
+    align-items: center;
+    gap: 20px; /* Adds vertical space between cards */
+  }
+
+  #certifications .col-md-3 {
+    width: 100%;
+    max-width: 100%;
+  }
+
+  #certifications .cert-card {
+    width: 100%;
+    border: 2px solid #a29bfe;
+    background-color: #1e1c39;
+  }
+
+  #certifications .big.big-2 {
+    font-size: 2.5rem;
+    letter-spacing: 3px;
+    top: 5px;
+  }
+
+  #certifications h2.mb-4 {
+    margin-top: 30px;
+    font-size: 1.5rem;
+    text-align: center;
+  }
+
+  #certifications p {
+    font-size: 1rem;
+    text-align: center;
+  }
+  #certifications .certificate-img img {
+    width: 100%;
+  }
+}
+
+/* project */
 
 .cert-card {
   background-color: #292854;
@@ -668,6 +830,11 @@
   max-width: 90%;
 }
 
+@media (max-width: 576px) {
+  .project-card {
+    margin-bottom: 20px;
+  }
+}
 /* Contact page */
 
 	.ftco-hireme-custom {
@@ -736,13 +903,14 @@
 }
 
 	.project-card {
-  background-color: #292854;
+  background-color:#1e1c39;
   border: 1px solid #333;
   border-radius: 16px;
   opacity: 0;
   transform: scale(0.9) translateY(20px);
   transition: opacity 0.6s ease-out, transform 0.6s ease-out;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.5);
+   margin-bottom: 30px;
 }
 
 
@@ -758,9 +926,49 @@
 }
 
 .project-card img {
+  width: 100%;
+  height: auto;
   max-height: 180px;
-  object-fit: cover;
   border-radius: 12px;
+  object-fit: cover;
+}
+
+@media (max-width: 576px) {
+  #projects-section .project-card {
+    margin-bottom: 20px;
+  }
+  #projects-section .Heading {
+    font-size: 2rem;
+    margin-bottom: 10px;
+  }
+
+  #projects-section h2 {
+    font-size: 1.4rem;
+    margin-bottom: 10px;
+  }
+
+  #projects-section p {
+    font-size: 0.95rem;
+    padding: 0 12px;
+  }
+
+  .project-card {
+    padding: 16px;
+    margin-bottom: 30px;
+  }
+
+  .project-card h3 {
+    font-size: 1.1rem;
+  }
+
+  .project-card p {
+    font-size: 0.9rem;
+  }
+
+  .project-card .btn {
+    font-size: 0.85rem;
+    padding: 8px 16px;
+  }
 }
 
 /* Banner */
