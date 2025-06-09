@@ -309,6 +309,8 @@
       box-shadow: 0 0 10px #7b6fffcc;
     }
 
+
+
     /* Image placeholder with subtle gradient overlay */
  .hero-container {
       margin: 0;
@@ -333,7 +335,7 @@
       top: 70px;
       left: 50%;
       transform: translateX(-50%);
-      width: 320px;
+      width: 340px;
       height: 270px;
       background:  radial-gradient(circle, #00FFFF, #A855F7);
       box-shadow: 0 0 60px rgba(98, 0, 255, 0.3);
@@ -364,19 +366,8 @@
   }
 }
 
-    /* .profile-image {
-      position: relative;
-      width: 85%;
-      max-width: 300px;
-      height: auto;
-      z-index: 2;
-      object-fit: contain;
-      margin-top: -80px;
-      margin-left: 33px;
 
-    } */
-
- .profile-image {
+.profile-image {
   position: relative;
   max-width: 280px;
   width: 100%;
@@ -385,8 +376,27 @@
   border-radius: 20px;
   margin: auto;
   margin-top: -80px;
-  margin-left: 33px;
+  margin-left: 39px;
+
+  /* Faded bottom effect */
+  -webkit-mask-image: linear-gradient(to bottom, black 75%, transparent 100%);
+  mask-image: linear-gradient(to bottom, black 75%, transparent 100%);
+  -webkit-mask-size: 100% 100%;
+  mask-size: 100% 100%;
+  -webkit-mask-repeat: no-repeat;
+  mask-repeat: no-repeat;
+
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
 }
+
+.profile-image:hover {
+  transform: scale(1.05); /* slight zoom */
+   filter: brightness(1.10) saturate(1.0);
+}
+
+
+
+
 
 @media (max-width: 576px) {
   .profile-image {
